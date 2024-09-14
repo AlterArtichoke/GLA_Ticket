@@ -28,8 +28,8 @@ def create_ticket_from_template(roll_number, name, output_path):
     text_roll = f"Reg.No: {roll_number}"
 
     # Manually increase font size to make text larger
-    font_size = 200  # Try increasing the font size manually
-    font_path = "arial.ttf"  # Path to your font
+    font_size = 100  # You can adjust this value further
+    font_path = "KaushanScript-Regular.ttf"  # Path to your font
 
     # Load the font with the updated size
     try:
@@ -45,12 +45,25 @@ def create_ticket_from_template(roll_number, name, output_path):
     roll_width = roll_bbox[2] - roll_bbox[0]
 
     # Define the coordinates for "Name" and "Reg.No" to be lower and centered
-    name_position = ((img_width - name_width) // 2, img_height - 250)  # 250 pixels from the bottom
-    roll_number_position = ((img_width - roll_width) // 2, img_height - 180)  # 180 pixels from the bottom
+    # Adjust the spacing between Name and Reg.No by modifying the y-coordinates
+    name_position = ((img_width - name_width) // 2, img_height - 310)  # Adjust this value for name
+    roll_number_position = ((img_width - roll_width) // 2, img_height - 310 + 120)  # Adjust this value for roll number
 
-    # Add name and roll number to the template, centered
-    draw.text(name_position, text_name, font=font, fill=(255, 165, 0))  # Orange text color for Name
-    draw.text(roll_number_position, text_roll, font=font, fill=(255, 165, 0))  # Orange text color for Reg.No
+    # Define stroke properties (border)
+    stroke_width = 5  # Thickness of the border
+    stroke_color = (165, 42, 42)  # Brown color for the stroke
+
+    # Draw bordered "Name" text
+    for offset in [(x, y) for x in range(-stroke_width, stroke_width+1) for y in range(-stroke_width, stroke_width+1)]:
+        draw.text((name_position[0] + offset[0], name_position[1] + offset[1]), text_name, font=font, fill=stroke_color)
+
+    # Draw bordered "Reg.No" text
+    for offset in [(x, y) for x in range(-stroke_width, stroke_width+1) for y in range(-stroke_width, stroke_width+1)]:
+        draw.text((roll_number_position[0] + offset[0], roll_number_position[1] + offset[1]), text_roll, font=font, fill=stroke_color)
+
+    # Draw the actual "Name" and "Roll No." text in orange, centered
+    draw.text(name_position, text_name, font=font, fill=(255, 235, 0))  # Orange text color for Name
+    draw.text(roll_number_position, text_roll, font=font, fill=(255, 235, 0))  # Orange text color for Reg.No
 
     # Save the new ticket with the name and roll number
     ticket.save(output_path)
