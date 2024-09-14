@@ -3,7 +3,7 @@ import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
 # Load the registration data from an Excel file
-excel_file = 'reg_details.xlsx'  # Ensure this file is in the same directory or provide the path
+excel_file = 'email_details.xlsx'  # Ensure this file is in the same directory or provide the path
 df = pd.read_excel(excel_file)
 
 # Create a "Tickets" folder if it doesn't exist
@@ -12,7 +12,7 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 # Path to your predesigned ticket template
-template_path = '/Users/kaytee/Documents/BroCodes/GLA Ticket/GLA_Ticket/15th September.png'
+template_path = '/Users/kaytee/Documents/BroCodes/GLA Ticket/GLA_Ticket/final.png'
 
 # Function to add name and roll number to the ticket template
 def create_ticket_from_template(roll_number, name, output_path):
@@ -24,8 +24,8 @@ def create_ticket_from_template(roll_number, name, output_path):
     img_width, img_height = ticket.size
 
     # Define the text to be added
-    text_name = f"Name: {name}"
-    text_roll = f"Reg.No: {roll_number}"
+    text_name = f"{name}"
+    text_roll = f"{roll_number}"
 
     # Manually increase font size to make text larger
     font_size = 100  # You can adjust this value further
@@ -46,8 +46,8 @@ def create_ticket_from_template(roll_number, name, output_path):
 
     # Define the coordinates for "Name" and "Reg.No" to be lower and centered
     # Adjust the spacing between Name and Reg.No by modifying the y-coordinates
-    name_position = ((img_width - name_width) // 2, img_height - 310)  # Adjust this value for name
-    roll_number_position = ((img_width - roll_width) // 2, img_height - 310 + 120)  # Adjust this value for roll number
+    name_position = ((img_width - name_width) // 2, img_height - 610)  # Adjust this value for name
+    roll_number_position = ((img_width - roll_width) // 2, img_height - 610 + 130)  # Adjust this value for roll number
 
     # Define stroke properties (border)
     stroke_width = 5  # Thickness of the border
