@@ -11,14 +11,16 @@ excel_file = 'email_details.xlsx'  # Ensure this file has columns 'Roll Number' 
 df = pd.read_excel(excel_file)
 
 # Gmail account credentials
-gmail_user = 'krish.tejwani2022@vitstudent.ac.in'
-gmail_password = 'nmqo ghup fgol zdcr'  # If 2-factor auth is enabled, use app-specific password
+gmail_user = '<your_email_id>'
+gmail_password = '<your_app_generated_password>'  # If 2-factor auth is enabled, use app-specific password
 
 # Email settings
 subject = "Welcome to the Event!"
 body = """Dear Participant,
 
 Thank you for registering for the event! Please find attached your ticket.
+
+Kindly present this ticket at the registration desk on the day of the event. Be present at the venue at 3 PM
 
 We look forward to seeing you!
 

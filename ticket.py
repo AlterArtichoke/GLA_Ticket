@@ -12,7 +12,7 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 # Path to your predesigned ticket template
-template_path = '/Users/kaytee/Documents/BroCodes/GLA Ticket/GLA_Ticket/final.png'
+template_path = 'final.png'
 
 # Function to add name and roll number to the ticket template
 def create_ticket_from_template(roll_number, name, output_path):
@@ -51,7 +51,7 @@ def create_ticket_from_template(roll_number, name, output_path):
 
     # Define stroke properties (border)
     stroke_width = 5  # Thickness of the border
-    stroke_color = (165, 42, 42)  # Brown color for the stroke
+    stroke_color = (0, 0, 0)  # Brown color for the stroke
 
     # Draw bordered "Name" text
     for offset in [(x, y) for x in range(-stroke_width, stroke_width+1) for y in range(-stroke_width, stroke_width+1)]:
